@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react'
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState('home')
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,7 +32,12 @@ export default function Home() {
     const element = document.getElementById(sectionId)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
+      setIsMobileMenuOpen(false) // Close mobile menu after clicking
     }
+  }
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen)
   }
 
   return (
@@ -84,6 +90,65 @@ export default function Home() {
             <a href="#book">BOOK ONLINE</a>
           </div>
           <div className="login-link">
+            <span>👤</span>
+            <a href="#login">Log In</a>
+          </div>
+          
+          {/* Mobile Menu Button */}
+          <button className="mobile-menu-btn" onClick={toggleMobileMenu}>
+            <span className={`hamburger ${isMobileMenuOpen ? 'active' : ''}`}>
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          </button>
+        </div>
+        
+        {/* Mobile Menu */}
+        <div className={`mobile-menu ${isMobileMenuOpen ? 'active' : ''}`}>
+          <a 
+            href="#home" 
+            className={activeSection === 'home' ? 'active' : ''}
+            onClick={(e) => {
+              e.preventDefault()
+              scrollToSection('home')
+            }}
+          >
+            HOME
+          </a>
+          <a 
+            href="#about" 
+            className={activeSection === 'about' ? 'active' : ''}
+            onClick={(e) => {
+              e.preventDefault()
+              scrollToSection('about')
+            }}
+          >
+            ABOUT
+          </a>
+          <a 
+            href="#portfolio" 
+            className={activeSection === 'portfolio' ? 'active' : ''}
+            onClick={(e) => {
+              e.preventDefault()
+              scrollToSection('portfolio')
+            }}
+          >
+            PORTFOLIO
+          </a>
+          <a 
+            href="#contact" 
+            className={activeSection === 'contact' ? 'active' : ''}
+            onClick={(e) => {
+              e.preventDefault()
+              scrollToSection('contact')
+            }}
+          >
+            CONTACT
+          </a>
+          <a href="#albums">CLIENT ALBUMS</a>
+          <a href="#book">BOOK ONLINE</a>
+          <div className="mobile-login">
             <span>👤</span>
             <a href="#login">Log In</a>
           </div>

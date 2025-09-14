@@ -84,6 +84,92 @@ a {
   font-size: 0.9rem;
 }
 
+/* Mobile Menu Button */
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  width: 25px;
+  height: 20px;
+  justify-content: space-between;
+}
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: #000;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  flex-direction: column;
+  padding: 1rem 0;
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu.active {
+  display: flex;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.mobile-menu a {
+  padding: 1rem 2rem;
+  font-weight: 500;
+  transition: background 0.3s ease;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.mobile-menu a:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.mobile-menu a.active {
+  background: rgba(0, 0, 0, 0.1);
+  border-left: 3px solid #000;
+}
+
+.mobile-login {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin-top: 0.5rem;
+}
+
 /* Hero Section */
 .hero {
   height: 100vh;
@@ -371,8 +457,20 @@ a {
     display: none;
   }
   
+  .login-link {
+    display: none;
+  }
+  
+  .mobile-menu-btn {
+    display: block;
+  }
+  
   .hero-content h1 {
     font-size: 2.5rem;
+  }
+  
+  .hero-content .tagline {
+    font-size: 1rem;
   }
   
   .about-content,
@@ -381,11 +479,57 @@ a {
     gap: 2rem;
   }
   
-  .social-icons {
-    display: none;
+  .about-text h2 {
+    font-size: 2rem;
+  }
+  
+  .about-text p {
+    font-size: 1rem;
+    text-align: left;
   }
   
   .portfolio-grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .contact-info h2 {
+    font-size: 2rem;
+  }
+  
+  .container {
+    padding: 0 15px;
+  }
+  
+  .nav-content {
+    padding: 0 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  
+  .hero-content .decorative {
+    font-size: 1.2rem;
+  }
+  
+  .about-text h2 {
+    font-size: 1.8rem;
+  }
+  
+  .contact-info h2 {
+    font-size: 1.8rem;
+  }
+  
+  .book-session {
+    padding: 1rem 1.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .submit-btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
   }
 }
